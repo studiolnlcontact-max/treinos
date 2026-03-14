@@ -1002,3 +1002,51 @@ body[data-accent="tk"] .dock-btn--primary {
     transform: translateX(-50%);
   }
 }
+
+
+/* ===== Ajustes finos v4 ===== */
+.exercise-row.is-active-rest {
+  border-radius: 16px;
+  padding: 14px 12px;
+  margin: 0 -12px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+}
+
+.timer-dock {
+  max-width: min(100%, 430px);
+  overflow: visible;
+}
+
+.timer-dock__top {
+  align-items: center;
+}
+
+.timer-dock__exercise {
+  max-width: 150px;
+}
+
+.timer-dock__time {
+  flex-shrink: 0;
+  font-size: clamp(36px, 10vw, 46px);
+  line-height: 0.95;
+}
+
+@media (max-width: 390px) {
+  .timer-dock {
+    padding: 12px;
+  }
+  .timer-dock__top {
+    gap: 10px;
+  }
+  .timer-dock__exercise {
+    max-width: 120px;
+    font-size: 12px;
+  }
+  .timer-dock__time {
+    font-size: 34px;
+  }
+  .timer-dock__actions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
