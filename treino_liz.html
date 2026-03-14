@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Treino da Liz</title>
+<style>
+body { margin:0; padding:0 0 40px 0; font-family:sans-serif; background:#f472b6; color:#333; }
+header { text-align:center; padding:20px; color:white; }
+header h1 { margin:0; font-size:26px; }
+header p { margin:4px 0 0; font-size:14px; }
+.wrap { padding:12px; }
+.card { background:white; border-radius:14px; padding:14px; margin-bottom:14px; }
+h2 { color:#ec4899; margin:0 0 10px 0; font-size:16px; }
+.ex { display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid #eee; }
+.ex:last-child { border:none; }
+.ex-name { font-size:14px; font-weight:600; }
+.ex-reps { font-size:12px; color:#999; margin-top:2px; }
+.btn-feito { background:#ec4899; border:none; color:white; padding:7px 12px; border-radius:9px; font-size:13px; cursor:pointer; }
+.btn-feito.ok { background:#22c55e; }
+.prog-label { font-size:13px; color:#666; margin-bottom:6px; }
+.prog-bg { background:#eee; height:10px; border-radius:10px; overflow:hidden; }
+.prog-fill { height:10px; background:#ec4899; border-radius:10px; width:0; transition:width 0.3s; }
+.timer-num { font-size:52px; font-weight:bold; color:#ec4899; text-align:center; margin:6px 0; }
+.timer-msg { font-size:13px; color:#22c55e; font-weight:600; text-align:center; min-height:18px; margin-bottom:6px; }
+.timer-btns { text-align:center; }
+.tbtn { background:#ec4899; border:none; color:white; padding:9px 13px; border-radius:9px; font-size:13px; margin:3px; cursor:pointer; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Treino da Liz 🎀</h1>
+  <p>Posterior • Core • Braços</p>
+</header>
+
+<div class="wrap">
+
+  <div class="card">
+    <div class="timer-num" id="tDisplay">60</div>
+    <div class="timer-msg" id="tMsg"></div>
+    <div class="timer-btns">
+      <button class="tbtn" id="btnStart">▶ Iniciar</button>
+      <button class="tbtn" id="btnPause">⏸ Pause</button>
+      <button class="tbtn" id="btnStop">⏹ Stop</button>
+      <button class="tbtn" id="btnReset">↺ Reset</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="prog-label">Progresso: <span id="progNum">0</span>%</div>
+    <div class="prog-bg"><div class="prog-fill" id="progFill"></div></div>
+  </div>
+
+  <div class="card">
+    <h2>Dia 1 – Posterior</h2>
+    <div class="ex"><div><div class="ex-name">Levantamento Terra</div><div class="ex-reps">4x 6-8</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Stiff com halter</div><div class="ex-reps">4x 8-10</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Hip Thrust</div><div class="ex-reps">4x 10</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Prancha</div><div class="ex-reps">3x 40s</div></div><button class="btn-feito">Feito</button></div>
+  </div>
+
+  <div class="card">
+    <h2>Dia 2 – Braços + Core</h2>
+    <div class="ex"><div><div class="ex-name">Rosca Direta</div><div class="ex-reps">4x 10-12</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Rosca Martelo</div><div class="ex-reps">3x 12</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Tríceps Testa</div><div class="ex-reps">4x 10-12</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Abdominal</div><div class="ex-reps">3x 15</div></div><button class="btn-feito">Feito</button></div>
+  </div>
+
+  <div class="card">
+    <h2>Dia 3 – Costas</h2>
+    <div class="ex"><div><div class="ex-name">Remada Curvada</div><div class="ex-reps">4x 10</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Remada Unilateral</div><div class="ex-reps">3x 10-12</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Pullover</div><div class="ex-reps">3x 12</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Abdominal Reverso</div><div class="ex-reps">3x 15</div></div><button class="btn-feito">Feito</button></div>
+  </div>
+
+  <div class="card">
+    <h2>Dia 4 – Glúteo</h2>
+    <div class="ex"><div><div class="ex-name">Hip Thrust</div><div class="ex-reps">4x 10-12</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Bulgarian Split Squat</div><div class="ex-reps">3x 10</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Stiff</div><div class="ex-reps">3x 10</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Prancha</div><div class="ex-reps">3x 40s</div></div><button class="btn-feito">Feito</button></div>
+  </div>
+
+  <div class="card">
+    <h2>Dia 5 – Braços</h2>
+    <div class="ex"><div><div class="ex-name">Rosca Direta</div><div class="ex-reps">4x 10</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Rosca Martelo</div><div class="ex-reps">3x 12</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Tríceps Testa</div><div class="ex-reps">4x 10</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Tríceps Francês</div><div class="ex-reps">3x 12</div></div><button class="btn-feito">Feito</button></div>
+  </div>
+
+  <div class="card">
+    <h2>Dia 6 – Corpo Leve</h2>
+    <div class="ex"><div><div class="ex-name">Goblet Squat</div><div class="ex-reps">3x 12</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Remada Leve</div><div class="ex-reps">3x 10</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Abdominal</div><div class="ex-reps">4x 15</div></div><button class="btn-feito">Feito</button></div>
+    <div class="ex"><div><div class="ex-name">Prancha</div><div class="ex-reps">3x 45s</div></div><button class="btn-feito">Feito</button></div>
+  </div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  var TOTAL = 24;
+  var feitos = 0;
+  var tVal = 60;
+  var tInt = null;
+
+  var tDisplay = document.getElementById("tDisplay");
+  var tMsg = document.getElementById("tMsg");
+  var progFill = document.getElementById("progFill");
+  var progNum = document.getElementById("progNum");
+
+  function tShow() {
+    tDisplay.innerHTML = tVal;
+  }
+
+  // botões feito
+  var btnsFt = document.querySelectorAll(".btn-feito");
+  for (var i = 0; i < btnsFt.length; i++) {
+    btnsFt[i].addEventListener("click", function() {
+      if (this.className.indexOf("ok") === -1) {
+        this.className = "btn-feito ok";
+        this.innerHTML = "&#10003;";
+        feitos++;
+        var pct = Math.round((feitos / TOTAL) * 100);
+        progFill.style.width = pct + "%";
+        progNum.innerHTML = pct;
+      }
+    });
+  }
+
+  // timer
+  document.getElementById("btnStart").addEventListener("click", function() {
+    if (tInt) return;
+    if (tVal <= 0) { tVal = 60; tShow(); }
+    tMsg.innerHTML = "";
+    tInt = setInterval(function() {
+      tVal = tVal - 1;
+      tShow();
+      if (tVal <= 0) {
+        clearInterval(tInt);
+        tInt = null;
+        tMsg.innerHTML = "Descanso acabou! 💪 Bora!";
+      }
+    }, 1000);
+  });
+
+  document.getElementById("btnPause").addEventListener("click", function() {
+    if (tInt) { clearInterval(tInt); tInt = null; }
+  });
+
+  document.getElementById("btnStop").addEventListener("click", function() {
+    if (tInt) { clearInterval(tInt); tInt = null; }
+    tVal = 60; tShow(); tMsg.innerHTML = "";
+  });
+
+  document.getElementById("btnReset").addEventListener("click", function() {
+    if (tInt) { clearInterval(tInt); tInt = null; }
+    tVal = 60; tShow(); tMsg.innerHTML = "";
+  });
+
+});
+</script>
+
+</body>
+</html>
