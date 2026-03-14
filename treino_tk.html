@@ -1,167 +1,106 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Treino do TK</title>
-<style>
-body { margin:0; padding:0 0 40px 0; font-family:sans-serif; background:#0d0d0d; color:#f0f0f0; }
-header { text-align:center; padding:24px 20px 16px; background:#1a0a2e; border-bottom:2px solid #4c1d95; }
-header h1 { margin:0; font-size:26px; color:#fff; letter-spacing:1px; }
-header p { margin:5px 0 0; font-size:13px; color:#a78bfa; }
-.wrap { padding:12px; }
-.card { background:#1a1a2e; border:1px solid #2d1b69; border-radius:14px; padding:14px; margin-bottom:14px; }
-h2 { color:#a78bfa; margin:0 0 10px 0; font-size:16px; text-transform:uppercase; letter-spacing:0.5px; }
-.ex { display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid #2a2a3e; }
-.ex:last-child { border:none; }
-.ex-name { font-size:14px; font-weight:600; color:#f0f0f0; }
-.ex-reps { font-size:12px; color:#7c6fa0; margin-top:2px; }
-.btn-feito { background:#4c1d95; border:none; color:white; padding:7px 12px; border-radius:9px; font-size:13px; cursor:pointer; }
-.btn-feito.ok { background:#16a34a; }
-.prog-label { font-size:13px; color:#a78bfa; margin-bottom:6px; }
-.prog-bg { background:#2a2a3e; height:8px; border-radius:10px; overflow:hidden; }
-.prog-fill { height:8px; background:#7c3aed; border-radius:10px; width:0; transition:width 0.3s; }
-.timer-num { font-size:56px; font-weight:bold; color:#c4b5fd; text-align:center; margin:6px 0; letter-spacing:-2px; }
-.timer-msg { font-size:13px; color:#4ade80; font-weight:600; text-align:center; min-height:18px; margin-bottom:8px; }
-.timer-btns { text-align:center; }
-.tbtn { background:#4c1d95; border:1px solid #6d28d9; color:white; padding:9px 13px; border-radius:9px; font-size:13px; margin:3px; cursor:pointer; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#07050f">
+  <title>Treino do TK</title>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<header>
-  <h1>Treino do TK 💪</h1>
-  <p>Força • Hipertrofia • Consistência</p>
-</header>
+  <div class="bg-scene">
+    <div class="orb orb-1" style="background:#5b21b6;"></div>
+    <div class="orb orb-2" style="background:#4c1d95; top:40%; left:-80px;"></div>
+    <div class="orb orb-3" style="background:#1e1b4b;"></div>
+  </div>
 
-<div class="wrap">
+  <div class="page">
 
-  <div class="card">
-    <div class="timer-num" id="tDisplay">60</div>
-    <div class="timer-msg" id="tMsg"></div>
-    <div class="timer-btns">
-      <button class="tbtn" id="btnStart">▶ Iniciar</button>
-      <button class="tbtn" id="btnPause">⏸ Pause</button>
-      <button class="tbtn" id="btnStop">⏹ Stop</button>
-      <button class="tbtn" id="btnReset">↺ Reset</button>
+    <!-- Header -->
+    <div class="workout-header wrap">
+      <a href="index.html" class="back-btn">← Voltar</a>
+      <div class="workout-title tk">Treino<br>do TK</div>
+      <div class="workout-subtitle">Força · Hipertrofia · Consistência</div>
+    </div>
+
+    <!-- Timer -->
+    <div class="timer-card glass">
+      <div class="timer-display tk" id="tDisplay">60</div>
+      <div class="timer-alert" id="tMsg"></div>
+      <div class="timer-controls">
+        <button class="t-btn primary-tk" id="btnStart">▶ Iniciar</button>
+        <button class="t-btn" id="btnPause">⏸ Pause</button>
+        <button class="t-btn" id="btnStop">⏹ Stop</button>
+        <button class="t-btn" id="btnReset">↺ Reset</button>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-card glass">
+      <div class="progress-label">
+        Progresso
+        <span><span id="progNum">0</span>%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill tk" id="progFill"></div>
+      </div>
+    </div>
+
+    <!-- Day Cards -->
+    <div class="day-cards">
+
+      <div class="day-card glass" style="animation-delay:0.22s">
+        <div class="day-title tk">Dia 1 — Peito + Tríceps</div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Supino com halter</div><div class="ex-reps">4 × 6-8</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Supino inclinado</div><div class="ex-reps">3 × 8-10</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Tríceps testa</div><div class="ex-reps">4 × 10</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Tríceps francês</div><div class="ex-reps">3 × 12</div></div><button class="btn-done">Feito</button></div>
+      </div>
+
+      <div class="day-card glass" style="animation-delay:0.28s">
+        <div class="day-title tk">Dia 2 — Costas</div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Remada curvada</div><div class="ex-reps">4 × 8</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Remada unilateral</div><div class="ex-reps">4 × 10</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Pullover com halter</div><div class="ex-reps">3 × 12</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Prancha</div><div class="ex-reps">3 × 45s</div></div><button class="btn-done">Feito</button></div>
+      </div>
+
+      <div class="day-card glass" style="animation-delay:0.34s">
+        <div class="day-title tk">Dia 3 — Pernas</div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Agachamento goblet</div><div class="ex-reps">4 × 8</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Stiff</div><div class="ex-reps">4 × 10</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Flexora</div><div class="ex-reps">4 × 10</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Abdominal</div><div class="ex-reps">3 × 15</div></div><button class="btn-done">Feito</button></div>
+      </div>
+
+      <div class="day-card glass" style="animation-delay:0.40s">
+        <div class="day-title tk">Dia 4 — Peito + Ombro</div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Supino reto</div><div class="ex-reps">4 × 6-8</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Supino inclinado</div><div class="ex-reps">3 × 10</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Elevação lateral</div><div class="ex-reps">4 × 12</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Prancha</div><div class="ex-reps">3 × 40s</div></div><button class="btn-done">Feito</button></div>
+      </div>
+
+      <div class="day-card glass" style="animation-delay:0.46s">
+        <div class="day-title tk">Dia 5 — Braços</div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Rosca direta</div><div class="ex-reps">4 × 10</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Rosca martelo</div><div class="ex-reps">3 × 12</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Tríceps testa</div><div class="ex-reps">4 × 10</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Tríceps francês</div><div class="ex-reps">3 × 12</div></div><button class="btn-done">Feito</button></div>
+      </div>
+
+      <div class="day-card glass" style="animation-delay:0.52s">
+        <div class="day-title tk">Dia 6 — Corpo Geral</div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Agachamento goblet</div><div class="ex-reps">3 × 12</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Remada leve</div><div class="ex-reps">3 × 10</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Abdominal</div><div class="ex-reps">4 × 15</div></div><button class="btn-done">Feito</button></div>
+        <div class="exercise-row"><div class="ex-info"><div class="ex-name">Prancha</div><div class="ex-reps">3 × 45s</div></div><button class="btn-done">Feito</button></div>
+      </div>
+
     </div>
   </div>
 
-  <div class="card">
-    <div class="prog-label">Progresso: <span id="progNum">0</span>%</div>
-    <div class="prog-bg"><div class="prog-fill" id="progFill"></div></div>
-  </div>
-
-  <div class="card">
-    <h2>Dia 1 – Peito + Tríceps</h2>
-    <div class="ex"><div><div class="ex-name">Supino com halter</div><div class="ex-reps">4x 6-8</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Supino inclinado</div><div class="ex-reps">3x 8-10</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Tríceps testa</div><div class="ex-reps">4x 10</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Tríceps francês</div><div class="ex-reps">3x 12</div></div><button class="btn-feito">Feito</button></div>
-  </div>
-
-  <div class="card">
-    <h2>Dia 2 – Costas</h2>
-    <div class="ex"><div><div class="ex-name">Remada curvada</div><div class="ex-reps">4x 8</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Remada unilateral</div><div class="ex-reps">4x 10</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Pullover com halter</div><div class="ex-reps">3x 12</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Prancha</div><div class="ex-reps">3x 45s</div></div><button class="btn-feito">Feito</button></div>
-  </div>
-
-  <div class="card">
-    <h2>Dia 3 – Pernas</h2>
-    <div class="ex"><div><div class="ex-name">Agachamento goblet</div><div class="ex-reps">4x 8</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Stiff</div><div class="ex-reps">4x 10</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Flexora</div><div class="ex-reps">4x 10</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Abdominal</div><div class="ex-reps">3x 15</div></div><button class="btn-feito">Feito</button></div>
-  </div>
-
-  <div class="card">
-    <h2>Dia 4 – Peito + Ombro</h2>
-    <div class="ex"><div><div class="ex-name">Supino reto</div><div class="ex-reps">4x 6-8</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Supino inclinado</div><div class="ex-reps">3x 10</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Elevação lateral</div><div class="ex-reps">4x 12</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Prancha</div><div class="ex-reps">3x 40s</div></div><button class="btn-feito">Feito</button></div>
-  </div>
-
-  <div class="card">
-    <h2>Dia 5 – Braços</h2>
-    <div class="ex"><div><div class="ex-name">Rosca direta</div><div class="ex-reps">4x 10</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Rosca martelo</div><div class="ex-reps">3x 12</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Tríceps testa</div><div class="ex-reps">4x 10</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Tríceps francês</div><div class="ex-reps">3x 12</div></div><button class="btn-feito">Feito</button></div>
-  </div>
-
-  <div class="card">
-    <h2>Dia 6 – Corpo Geral</h2>
-    <div class="ex"><div><div class="ex-name">Agachamento goblet</div><div class="ex-reps">3x 12</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Remada leve</div><div class="ex-reps">3x 10</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Abdominal</div><div class="ex-reps">4x 15</div></div><button class="btn-feito">Feito</button></div>
-    <div class="ex"><div><div class="ex-name">Prancha</div><div class="ex-reps">3x 45s</div></div><button class="btn-feito">Feito</button></div>
-  </div>
-
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-
-  var TOTAL = 24;
-  var feitos = 0;
-  var tVal = 60;
-  var tInt = null;
-
-  var tDisplay = document.getElementById("tDisplay");
-  var tMsg = document.getElementById("tMsg");
-  var progFill = document.getElementById("progFill");
-  var progNum = document.getElementById("progNum");
-
-  function tShow() { tDisplay.innerHTML = tVal; }
-
-  var btnsFt = document.querySelectorAll(".btn-feito");
-  for (var i = 0; i < btnsFt.length; i++) {
-    btnsFt[i].addEventListener("click", function() {
-      if (this.className.indexOf("ok") === -1) {
-        this.className = "btn-feito ok";
-        this.innerHTML = "&#10003;";
-        feitos++;
-        var pct = Math.round((feitos / TOTAL) * 100);
-        progFill.style.width = pct + "%";
-        progNum.innerHTML = pct;
-      }
-    });
-  }
-
-  document.getElementById("btnStart").addEventListener("click", function() {
-    if (tInt) return;
-    if (tVal <= 0) { tVal = 60; tShow(); }
-    tMsg.innerHTML = "";
-    tInt = setInterval(function() {
-      tVal = tVal - 1;
-      tShow();
-      if (tVal <= 0) {
-        clearInterval(tInt);
-        tInt = null;
-        tMsg.innerHTML = "Descanso acabou! 💪 Bora!";
-      }
-    }, 1000);
-  });
-
-  document.getElementById("btnPause").addEventListener("click", function() {
-    if (tInt) { clearInterval(tInt); tInt = null; }
-  });
-
-  document.getElementById("btnStop").addEventListener("click", function() {
-    if (tInt) { clearInterval(tInt); tInt = null; }
-    tVal = 60; tShow(); tMsg.innerHTML = "";
-  });
-
-  document.getElementById("btnReset").addEventListener("click", function() {
-    if (tInt) { clearInterval(tInt); tInt = null; }
-    tVal = 60; tShow(); tMsg.innerHTML = "";
-  });
-
-});
-</script>
-
+  <script src="assets/js/workout.js"></script>
 </body>
 </html>
