@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var state = loadState();
 
   if (!state.timer) {
-    state.timer = { duration: defaultRest, remaining: defaultRest, running: false, label: "Selecione uma série" };
+    state.timer = { duration: defaultRest, remaining: defaultRest, running: false, label: "Selecione uma série", activeExerciseKey: null };
   }
   if (!state.days) state.days = {};
   if (!state.exercises) state.exercises = {};
@@ -164,6 +164,9 @@ document.addEventListener("DOMContentLoaded", function () {
       restSelect.value = String(state.exercises[exKey].rest || defaultRest);
       restSelect.addEventListener("change", function (e) {
         state.exercises[exKey].rest = parseInt(e.target.value, 10);
+        if (state.timer.activeExerciseKey === exKey) {
+          setTimerDuration(state.exercises[exKey].rest || defaultRest, false, row.getAttribute("data-name") || "Descanso", exKey);
+        }
         saveState();
       });
 
@@ -179,6 +182,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         seriesWrap.appendChild(chip);
       }
+
+      row.addEventListener("click", function (e) {
+        if (e.target.closest('button, select, option')) return;
+        focusExercise(exKey, row);
+      });
 
       seriesBtn.addEventListener("click", function () {
         incrementSeries(exKey, row);
@@ -209,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function () {
     paintRow(row, ex);
     updateProgress();
     saveState();
-    setTimerDuration(ex.rest || defaultRest, true, row.getAttribute("data-name") || "Descanso");
+    setTimerDuration(ex.rest || defaultRest, true, row.getAttribute("data-name") || "Descanso", key);
   }
 
   function toggleSpecificSeries(key, row, idx) {
@@ -256,6 +264,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+
+  function focusExercise(key, row) {
+    var ex = state.exercises[key];
+    if (!ex) return;
+    setTimerDuration(ex.rest || defaultRest, false, row.getAttribute("data-name") || "Descanso", key);
+  }
+
+  function updateActiveExerciseUI() {
+    document.querySelectorAll('.exercise-row').forEach(function (row) {
+      var rowKey = row.getAttribute('data-key');
+      row.classList.toggle('is-active-rest', !!rowKey && rowKey === state.timer.activeExerciseKey);
+    });
+  }
+
   function updateProgress() {
     var totalSeries = 0;
     var doneSeries = 0;
@@ -268,13 +290,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (numEl) numEl.textContent = pct;
   }
 
-  function setTimerDuration(seconds, autostart, label) {
+  function setTimerDuration(seconds, autostart, label, activeExerciseKey) {
     clearTimerInterval();
     state.timer.duration = seconds;
     state.timer.remaining = seconds;
     state.timer.running = false;
     if (label) state.timer.label = label;
+    if (typeof activeExerciseKey !== 'undefined') state.timer.activeExerciseKey = activeExerciseKey;
     syncPresetControls(seconds);
+    updateActiveExerciseUI();
     updateTimerUI();
     saveState();
     if (autostart) startTimer();
@@ -347,6 +371,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (dockTime) dockTime.textContent = formatTime(remaining);
     if (dockExercise) dockExercise.textContent = state.timer.label || "Selecione uma série";
     if (dockToggle) dockToggle.textContent = state.timer.running ? "Pause" : "Iniciar";
+    updateActiveExerciseUI();
   }
 
   function syncPresetControls(seconds) {
