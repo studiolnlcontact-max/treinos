@@ -491,3 +491,280 @@ body {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+
+/* ── Enhanced Workout UX ────────────────────────────────── */
+body[data-accent] .page {
+  padding-bottom: 170px;
+}
+
+.timer-card {
+  position: sticky;
+  top: 10px;
+  z-index: 10;
+}
+
+.timer-topbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.timer-label {
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.timer-select {
+  width:100%;
+  border:1px solid var(--glass-border);
+  background:rgba(255,255,255,0.08);
+  color:var(--white);
+  border-radius:12px;
+  padding:11px 12px;
+  font-family:var(--font-body);
+  font-size:12px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.timer-presets {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin: 0 0 14px;
+}
+
+.preset-btn,
+.dock-btn {
+  border:1px solid var(--glass-border);
+  background:rgba(255,255,255,0.07);
+  color:var(--white);
+  border-radius:999px;
+  padding:8px 12px;
+  font-family:var(--font-body);
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.preset-btn.active {
+  border-color: rgba(255,255,255,0.26);
+  background: rgba(255,255,255,0.15);
+}
+
+.day-card {
+  padding-bottom: 12px;
+}
+
+.day-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+  cursor:pointer;
+}
+
+.day-toggle {
+  border:none;
+  background:transparent;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1;
+}
+
+.day-body {
+  overflow:hidden;
+  transition:max-height .25s ease, opacity .2s ease;
+  max-height:1200px;
+  opacity:1;
+}
+
+.day-card.collapsed .day-body {
+  max-height:0;
+  opacity:0;
+}
+
+.day-card.collapsed {
+  padding-bottom: 4px;
+}
+
+.exercise-row {
+  align-items:flex-start;
+  gap:12px;
+}
+
+.ex-name {
+  font-size:15px;
+}
+
+.ex-reps {
+  font-size:12px;
+  margin-bottom:8px;
+}
+
+.ex-meta {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+}
+
+.rest-wrap {
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.rest-label {
+  font-size:10px;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.rest-select-inline {
+  border:1px solid var(--glass-border);
+  background:rgba(255,255,255,0.07);
+  color:var(--white);
+  border-radius:999px;
+  padding:6px 10px;
+  font-family:var(--font-body);
+  font-size:10px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.series-wrap {
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+}
+
+.series-chip {
+  min-width:34px;
+  border:1px solid var(--glass-border);
+  background:rgba(255,255,255,0.05);
+  color:var(--white);
+  border-radius:999px;
+  padding:7px 10px;
+  font-family:var(--font-body);
+  font-size:10px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.series-chip.done {
+  background: rgba(34,197,94,0.22);
+  border-color: rgba(34,197,94,0.45);
+  color:#86efac;
+}
+
+.ex-actions {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  align-items:flex-end;
+}
+
+.btn-series {
+  border:1px solid var(--glass-border);
+  background:rgba(255,255,255,0.07);
+  color:var(--white);
+  border-radius:12px;
+  padding:9px 12px;
+  font-family:var(--font-body);
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  min-width:92px;
+}
+
+.btn-series.is-complete {
+  background: rgba(34,197,94,0.22);
+  border-color: rgba(34,197,94,0.45);
+  color:#86efac;
+}
+
+.btn-done {
+  min-width:92px;
+  text-align:center;
+}
+
+.timer-dock {
+  position:fixed;
+  left:12px;
+  right:12px;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 10px);
+  z-index: 30;
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap:12px;
+  padding:14px;
+  align-items:center;
+}
+
+.timer-dock__meta {
+  min-width:0;
+}
+
+.timer-dock__label {
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+
+.timer-dock__exercise {
+  font-size:12px;
+  font-weight:600;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.timer-dock__time {
+  font-family:var(--font-display);
+  font-size:44px;
+  line-height:1;
+}
+
+.timer-dock__time.liz { color: var(--pink-light); }
+.timer-dock__time.tk  { color: var(--purple-light); }
+
+.timer-dock__actions {
+  grid-column:1 / -1;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:8px;
+}
+
+.dock-btn--primary.liz { background: rgba(236,72,153,0.25); border-color: rgba(236,72,153,0.4); }
+.dock-btn--primary.tk  { background: rgba(124,58,237,0.25); border-color: rgba(124,58,237,0.4); }
+
+.workout-note {
+  margin: 0 18px 14px;
+  padding: 14px 16px;
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--muted);
+  animation: fadeUp 0.5s 0.14s ease both;
+}
+
+@media (min-width: 700px) {
+  .timer-dock {
+    left:50%;
+    right:auto;
+    width:min(540px, calc(100vw - 24px));
+    transform:translateX(-50%);
+  }
+}
