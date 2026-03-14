@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#07050f">
   <title>Treino da Liz</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-accent="liz">
 
   <div class="bg-scene">
     <div class="orb orb-1" style="background:#be185d;"></div>
@@ -101,6 +101,20 @@
     </div>
   </div>
 
-  <script src="assets/js/workout.js"></script>
+  <script src="workout.js"></script>
+
+    <div class="timer-dock glass" id="timerDock">
+      <div class="timer-dock__meta">
+        <div class="timer-dock__label">Descanso</div>
+        <div class="timer-dock__exercise" id="dockExercise">Selecione uma série</div>
+      </div>
+      <div class="timer-dock__time liz" id="dockTime">01:00</div>
+      <div class="timer-dock__actions">
+        <button class="dock-btn dock-btn--ghost" id="dockMinus">-15s</button>
+        <button class="dock-btn dock-btn--primary liz" id="dockToggle">Iniciar</button>
+        <button class="dock-btn dock-btn--ghost" id="dockPlus">+15s</button>
+      </div>
+    </div>
+
 </body>
 </html>
