@@ -7,7 +7,7 @@
   <title>Treino do TK</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body data-accent="tk">
+<body>
 
   <div class="bg-scene">
     <div class="orb orb-1" style="background:#5b21b6;"></div>
@@ -23,19 +23,6 @@
       <div class="workout-title tk">Treino<br>do TK</div>
       <div class="workout-subtitle">Força · Hipertrofia · Consistência</div>
     </div>
-
-    <!-- Timer -->
-    <div class="timer-card glass">
-      <div class="timer-display tk" id="tDisplay">60</div>
-      <div class="timer-alert" id="tMsg"></div>
-      <div class="timer-controls">
-        <button class="t-btn primary-tk" id="btnStart">▶ Iniciar</button>
-        <button class="t-btn" id="btnPause">⏸ Pause</button>
-        <button class="t-btn" id="btnStop">⏹ Stop</button>
-        <button class="t-btn" id="btnReset">↺ Reset</button>
-      </div>
-    </div>
-
     <!-- Progress -->
     <div class="progress-card glass">
       <div class="progress-label">
@@ -45,6 +32,12 @@
       <div class="progress-track">
         <div class="progress-fill tk" id="progFill"></div>
       </div>
+    </div>
+
+
+    <div class="mini-note glass">
+      <div class="mini-note__title">Fluxo refinado</div>
+      <div class="mini-note__text">Use <strong>+ Série</strong> para marcar a série e iniciar o descanso automaticamente. O timer fica fixo no rodapé para acompanhar o treino inteiro.</div>
     </div>
 
     <!-- Day Cards -->
@@ -104,17 +97,34 @@
   <script src="assets/js/workout.js"></script>
 
     <div class="timer-dock glass" id="timerDock">
-      <div class="timer-dock__meta">
-        <div class="timer-dock__label">Descanso</div>
-        <div class="timer-dock__exercise" id="dockExercise">Selecione uma série</div>
+      <div class="timer-dock__top">
+        <div class="timer-dock__meta">
+          <div class="timer-dock__label">Descanso</div>
+          <div class="timer-dock__exercise" id="dockExercise">Selecione uma série</div>
+        </div>
+        <div class="timer-dock__time" id="dockTime">01:00</div>
       </div>
-      <div class="timer-dock__time tk" id="dockTime">01:00</div>
-      <div class="timer-dock__actions">
-        <button class="dock-btn dock-btn--ghost" id="dockMinus">-15s</button>
-        <button class="dock-btn dock-btn--primary tk" id="dockToggle">Iniciar</button>
-        <button class="dock-btn dock-btn--ghost" id="dockPlus">+15s</button>
+
+      <div class="timer-dock__bottom">
+        <select class="dock-select" id="dockPreset" aria-label="Tempo padrão de descanso">
+          <option value="30">30s</option>
+          <option value="45">45s</option>
+          <option value="60" selected>60s</option>
+          <option value="90">90s</option>
+          <option value="120">120s</option>
+        </select>
+
+        <div class="timer-dock__actions">
+          <button class="dock-btn dock-btn--ghost" id="dockMinus">-15s</button>
+          <button class="dock-btn dock-btn--primary" id="dockToggle">Iniciar</button>
+          <button class="dock-btn dock-btn--ghost" id="dockReset">Reset</button>
+          <button class="dock-btn dock-btn--ghost" id="dockPlus">+15s</button>
+        </div>
       </div>
+
+      <div class="timer-dock__status" id="dockMsg"></div>
     </div>
 
+    <script src="assets/js/workout.js"></script>
 </body>
 </html>
